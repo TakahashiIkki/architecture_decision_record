@@ -60,7 +60,7 @@ Decision identification:
   * 多くの意思決定技法があります。一般的なものからソフトウェアアーキテクチャ固有のものまで。例えばダイアログマッピングなど。
 
   * グループでの意思決定は、活発な研究テーマです。
-  
+
 
 決定の成立と施行:
 
@@ -97,45 +97,46 @@ Decision identification:
 
 You can start using ADRs with tools any way you want.
 
-For example:
+例えば:
 
-  * If you like using Google Drive and online editing, then you can create a Google Doc, or Google Sheet.
+  * Google Driveを使ってオンラインで編集するのが好みならば、Google DocsやGoogle Spreadsheetが使える。
 
-  * If you like use source code version control, such as git, then you can create a file for each ADR.
+  * gitのようなバージョン管理システムを使うのが好みならば、ADR毎にファイルを作ればよい。
 
-  * If you like using project planning tools, such as Atlassian Jira, then you can use the tool's planning tracker.
+  * JIRAのようなプロジェクト計画ツールが好みであれば、ツールのプランニングトラッカーを使うと良い。
 
-  * If you like using wikis, such as MediaWiki, then you can create an ADR wiki.
+  * MediaWikiのようなWikiが好みであれば、ADR wikiを作ると良い
 
 
-## How to start using ADRs with git
+## gitを使ったADRの始め方
 
-If you like using git version control, then here is how we like to start using ADRs with git for a typical software project with source code.
+gitを使うのが好きな人のために、典型的なソフトウェアプロジェクトのためのgitでのADRの始め方をここに示す。
 
-Create a directory for ADR files:
+ADRファイルを置くためのディレクトリを作る:
 
 ```sh
 $ mkdir adr
 ```
 
-For each ADR, create a text file, such as `database.txt`:
+各ADRのために、`database.txt` のようなテキストファイルを作る:
 
 ```sh
 $ vi database.txt
 ```
 
-Write anything you want in the ADR. See the templates in this repository for ideas.
+ADRに必要なことを書き込む。このリポジトリにADRのテンプレートがあるので、それを参照しよう。
 
-Commit the ADR to your git repo.
+ADRをgitリポジトリにコミットする。
 
 
-## ADR file name conventions
+## ADRのファイル命名規約
 
-If you choose to create your ADRs using typical text files, then you may want to come up with your own ADR file name convention.
+テキストファイルを使ってADRを作るのであれば、ADRファイルの命名規約が欲しくなるだろう。
 
-We prefer to use a file name convention that has a specific format.
 
-Examples:
+以下のファイル命名規約を使うとよい。
+
+例:
 
   * choose_database.md
 
@@ -145,47 +146,46 @@ Examples:
 
   * handle_exceptions.md
 
-Our file name convention:
+ファイル命名規約:
 
-  * The name has a present tense imperative verb phrase. This helps readability and matches our commit message format.
+  * 名前には現在時制の命令動詞句を使う。これは可読性を高め、コミットメッセージのフォーマットにも合う。
 
-  * The name uses lowercase and underscores (same as this repo). This is a balance of readability and system usability.
+  * 名前には小文字とアンダースコアを使う。これは読みやすさとシステムでの扱いやすさのバランスだ。
 
-  * The extension is markdown. This can be useful for easy formatting.
+  * 拡張子はマークダウンのものにする。簡単にフォーマッティングするのに便利だから。
+
+## 良いADRを書くための提言
+
+良いADRの特徴:
+
+  * 時点 - いつADが作られたかを特定できる
+
+  * 合理性 - そのADを作らなきゃいけない理由を説明されている
+
+  * 不変性 - 前に公開したADRでなされた決定は変えてはならない
+
+  * 特殊性 - それぞれのADRは1つのADについてのものでなくてはならない
+
+ADRにおける良いコンテキストの性質:
+
+  * 組織の状況やビジネス上の優先度が説明されている
+
+  * チームの社会的構成とスキル構成に基づいた合理性と検討を含める。
+
+ADRにおける良い結果の性質:
+
+  * 正しいアプローチ - 「Yの代わりにXを始める必要がある」
+
+  * 間違ったアプローチ - あるADを作った際の利点/欠点への言及がない。
+
+新たなADRは以前のADRに取って代わることがある:
+
+  * 以前のADRを置き換えたり、無効にするADが発生したら、新たにADRを作ったほうが良い。
 
 
-## Suggestions for writing good ADRs
+## ADRのテンプレート例
 
-Characteristics of a good ADR:
-
-  * Point in Time - Identify when the AD was made
-
-  * Rationality - Explain the reason for making the particular AD
-
-  * Immutable record - The decisions made in a previously published ADR should not be altered
-
-  * Specificity - Each ADR should be about a single AD
-
-Characteristics of a good context in an ADR:
-
-  * Explain your organization's situation and business priorities
-
-  * Include rationale and considerations based on social and skills makeups of your teams
-
-Characteristics of good Consequences in an ADR::
-
-  * Right approach - "We need to start doing X instead of Y"
-
-  * Wrong approach - Do not explain the AD in terms of "Pros" and "Cons" of having made the particular AD
-
-A new ADR may take the place of a previous ADR:
-
-  * When an AD is made that replaces or invalidates a previous ADR, a new ADR should be created
-
-
-## ADR example templates
-
-ADR example templates that we have collected on the net:
+私たちがネット上で収集したADRのテンプレート例:
 
   * [ADR template by Michael Nygard](adr_template_by_michael_nygard.md) (simple and popular)
 
@@ -200,7 +200,7 @@ ADR example templates that we have collected on the net:
   * [ADR template using Planguage](adr_template_using_planguage.md) (more quality assurance oriented)
 
 
-## For more information
+## 追加情報
 
 Introduction:
 
@@ -208,7 +208,7 @@ Introduction:
 
   * [Architecturally significant requirements (wikipedia.org)](https://wikipedia.org/wiki/Architecturally_significant_requirements)
 
-Templates:
+テンプレート:
 
   * [Documenting architecture decisions - Michael Nygard (thinkrelevance.com)](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
 
@@ -216,7 +216,7 @@ Templates:
 
   * [Template for documenting architecture alternatives and decisions (stackoverflow.com)](http://stackoverflow.com/questions/7104735/template-for-documenting-architecture-alternatives-and-decisions)
 
-In-depth:
+より深く:
 
   * [ADMentor XML project (github.com)](https://github.com/IFS-HSR/ADMentor)
 
@@ -230,17 +230,17 @@ In-depth:
 
   * [ThoughtWorks Technology Radar: Lightweight Architecture Decision Records (thoughtworks.com)](https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records)
 
-Tools:
+ツール:
 
   * [Command-line tools for working with Architecture Decision Records](https://github.com/npryce/adr-tools)
 
   * [Command line tools with python by Victor Sluiter](https://bitbucket.org/tinkerer_/adr-tools-python/src/master/)
 
-Examples:
+例:
 
   * [Repository of Architecture Decision Records made for the Arachne Framework](https://github.com/arachne-framework/architecture)
 
-See also:
+あわせて読もう:
 
   * REMAP (Representation and Maintenance of Process Knowledge)
 

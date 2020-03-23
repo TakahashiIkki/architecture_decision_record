@@ -73,18 +73,18 @@ We want to keep secrets out of our source code management (SCM) version control 
 
 ### 議論
 
-We selected the approach of a file .env because:
+.envファイルのアプローチを選択した理由は以下のとおりである。
 
-  * It is popular including among experts.
+  * 熟練者にもなじみがある。
 
-  * It follows the pattern of `.env` files which our teams have successfully used many times on many projects.
+  * `.env`　ファイルのパターンは、私たちのチームで多くプロジェクトでよく使っていて上手く行っている。
 
-  * It is simple. Notably,  We are fine for now with the significant trade-offs that we see, such as a lack of audit capabilities as compared to an approach of a license server.
+  * シンプルである。ライセンスサーバのアプローチと比較して監査機能が不足しているなど、主要なトレードオフに関しては、今のところ問題ない。
 
 
-### Implications 
+### Implications
 
-We need to figure out a way to separate environment variable configuration that is public from any secrets management.
+どのような機密管理からも公開されている環境変数設定を分離する方法を見いだす必要がある。
 
 
 ## Related
@@ -92,49 +92,48 @@ We need to figure out a way to separate environment variable configuration that 
 
 ### Related decisions
 
-We expect all our applications to use this approach.
+すべてのアプリケーションがこのアプローチを使うことを期待する。
 
-We will plan to upgrade any of our applications that use a less-capable approach, such as hardcoding in a binary or in source code.
+バイナリまたはソースコードにハードコーディングされているような、あまりよろしくない手法を使っているアプリケーションはアップグレードする計画だ。
 
-We will keep as-is any of our applications that use a more-capable approach, such as a licensing server.
+ライセンスサーバなど、より高機能な手法を使用するアプリケーションは、現状のまま維持する。
 
 
 ### Related requirements
 
-We will add devops capabilities for the files, including hooks, tests, and continuous integration.
+フック、テスト、CIなど、ファイルにDevOps機能を追加するだろう。
 
-We need to train all developer teammates on this decision.
+この決定において、すべてのチームメイトの開発者を教育する必要がある。
 
 
 
 ### Related artifacts
 
-Each area where we deploy will need its own .env file and related files.
+デプロイする各環境で、.envファイルとその関連ファイルを必要とする。
 
 
 ### Related principles
 
-Easily reversible.
-
+簡単に元に戻せる。
 
 ## Notes
 
 
-Example file `.env`:
+`.env` ファイルの例:
 
 ```env
 NAME=Alice Anderson
 EMAIL=alice@example.com
 ```
 
-Example file `.env.defaults`:
+`.env.defaults` ファイルの例:
 
 ```env
 NAME=Joe Doe
 EMAIL=joe@example.com
 ```
 
-Example file `.env.schema` with just the keys:
+`.env.schema`の例。キーのみをもつ。
 
 ```env
 NAME
