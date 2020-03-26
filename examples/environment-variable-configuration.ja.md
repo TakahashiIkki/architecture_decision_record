@@ -25,8 +25,7 @@ Contents:
 
 ### 課題
 
-そのデプロイ環境に応じて異なる挙動ができるように、成果物/バイナリ/ソースを超えてアプリケーション
-We want our applications to be configurable beyond artifacts/binaries/source, such that one build can behave differently depending on its deployment environment.
+そのデプロイ環境に応じて異なる挙動ができるように、成果物/バイナリ/ソースを超えてアプリケーションを設定できるようにしたい。
 
   * これを達成するため、環境変数の設定を使いたい。
 
@@ -56,8 +55,7 @@ We want our applications to be configurable beyond artifacts/binaries/source, su
 
 ### 制約
 
-ソースコード管理(SCM)のバージョン管理システム(VCS)から秘密を守りたい。
-We want to keep secrets out of our source code management (SCM) version control system (VCS).
+ソースコード管理(SCM)のバージョン管理システム(VCS)で秘密を漏らさないようにした。
 
 一般的なソフトウェアフレームワークやライブラリとの互換性を目指したい。例えばNodeには、環境変数の設定を読み取るための"dotenv"というモジュールがある。
 

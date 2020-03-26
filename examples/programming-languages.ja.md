@@ -23,28 +23,29 @@ Contents:
 ## Summary
 
 
-### Issue
+### 課題
 
-We need to choose programming languages for our software. We have two major needs: a front-end programming language suitable for web applications, and a back-end programming language suitable for server applications.
-
-
-### Decision
-
-We are choosing TypeScript for the front-end.
-
-We are choosing Rust for the back-end.
+ソフトウェアのプログラミング言語を何にするか決める必要がある。Webアプリケーションに適したフロントエンドのプログラミング言語と、サーバアプリケーションに適したバックエンドのプログラミングの、大きく分けて2つが必要だ。
 
 
-### Status
+### 決定事項
 
-Decided. We are open to new alternatives as they arise.
+フロントエンドにはTypeScriptを使う。
 
+バックエンドにはRustを使う。
+
+
+### ステータス
+
+決定。
+新しい代替案があったらまたオープンにする。
 
 ## Details
 
 
 ### Assumptions
 
+フロントエンドアプリケーションは:
 The front-end applications are typical:
 
   * Typical users and interactions
@@ -55,76 +56,76 @@ The front-end applications are typical:
 
 The front-end applications is likely to evolve quickly:
 
-  * We want to ensure fast easy developments, deployments, iterations, etc.
+  * 開発やデプロイ、イテレーションが簡単で速くできることを保証したい。
 
-  * We value provability, such as type safety, and we are fine doing a bit more work to achieve it.
+  * 私たちは型安全などの検査性を重視していて、それを実現できるならもう少し努力してもいいと考えている。
 
-  * We do not need legacy compatibility.
+  * レガシーとの互換性は必要ない。
 
 The back-end applications are higher-than-typical:
 
-  * Higher-than-typical goals for quality, especially provability, reliability, security, etc.
+  * 品質、特に証明可能性、信頼性、セキュリティなどで通常より高めの目標がある。
 
-  * Higher-than-typical goals for near-real-time, i.e. we do not want pauses due to virtual machine garbage collection.
+  * ほぼリアルタイムについて高い目標がある。つまりVMのGCで処理が止まってほしくない。
 
-  * Higher-than-typical goals for functional programming, especially for parallelization, multi-core processing, and memory safety.
+  * 関数プログラミング、特に並行性、マルチコア処理、メモリ安全には高い目標がある。
 
-We accept lower compile-time speeds in favor of compile-time safety and runtime speeds.
+コンパイル時の安全性と実行時の速度のためなら、コンパイル時間が遅いことは許容する。
 
 
-### Constraints
+### 制約
 
-We have a strong constraint on languages that are usuable with major cloud provider services for functions, such as Amazon Lambda.
+Amazon Lamdaなど主要なクラウドプロバイダーのFaaSサービスでは使える言語に制約がある。
 
 
 ### Positions
 
-We considered these langauges:
+これらの言語を検討した:
 
   * C
 
   * C++
 
   * Clojure
-  
+
   * Elixir
-  
+
   * Erlang
-  
+
   * Elm
-  
+
   * Flow
-  
+
   * Go
-  
+
   * Haskell
-  
+
   * Java
-  
+
   * JavaScript
-  
+
   * Kotlin
-  
+
   * Python
-  
+
   * Ruby
-  
+
   * Rust
-  
+
   * TypeScript
 
 
 
-### Argument
+### 議論
 
-Summary per language:
+言語毎の検討概要:
 
-  * C: rejected because of low safety; Rust can do nearly everything better.
+  * C: 安全性が低いので棄却; Rustはほとんど全てでより良くできる。
 
   * C++: rejected because it's a mess; Rush can do nearly everything better.
 
   * Clojure: excellent modeling; best Lisp approximation; great runtime on the JVM.
-  
+
   * Elixir: excellent runtime including deployability and concurrency; excellent developer experience; relatively small ecosystem.
 
   * Erlang: excellent runtime including deployability and concurrency; challenging developer experience; relatively small ecosystem.
@@ -142,7 +143,7 @@ Summary per language:
   * JavaScript: most popular language ever; most widespread ecosystem.
 
   * Kotlin: fixes so much of Java; excelent backing by JetBrains; good published cases of porting from Java to Kotlin.
-  
+
   * Python: most popular language for systems administration; great analytics tooling; good web frameworks; but abandonded by Google in favor of Go.
 
   * Ruby: best developer experience ever; best web frameworks; nicest community; but very slow; somewhat hard to package.
@@ -151,7 +152,7 @@ Summary per language:
 
   * TypeScript: adds types to JavaScript; great transpiler; growing developer emphasis on porting from JavaScript to TypeScript; strong backing from Microsoft.
 
-We decided that VMs have a set of tradeoffs that we do not need right now, such as additional complexity that provides runtime capabilities.
+VMにはランタイム機能を提供するために複雑さが増す、といった今すぐには必要ないトレードオフがあると判断した。
 
 We believe that our core decision is driven by two cross-cutting concerns:
 
@@ -172,7 +173,7 @@ Honorable mentions go to the VM languages and web frameworks that we would choos
 
 Front-end developers will need to learn TypeScript. This is likely an easy learning curve if the developer's primary experience is using JavaScript.
 
-Back-end developers will need to learn Rust. This is likely a moderate learning curve if the developer's primary experience is using  C/C++, and a hard learning curve if the developer's primary experience is using Java, Python, Ruby, or similar memory-managed languages. 
+Back-end developers will need to learn Rust. This is likely a moderate learning curve if the developer's primary experience is using  C/C++, and a hard learning curve if the developer's primary experience is using Java, Python, Ruby, or similar memory-managed languages.
 
 TypeScript and Rust are both relatively new. This means that many tools do not yet have documentation for these languages. For example, the devops pipeline will need to be set up for these languages, and so far, none of the devops tools that we are evaluating have default examples for these langauges.
 
@@ -195,16 +196,17 @@ For example, for our front-end web framework, we are more-likley to decide on a 
 
 ### Related requirements
 
-Our entire toolchain must support these languages.
+私たちのツールチェーン全体で、これらの言語をサポートしなければならない。
 
 
 ### Related artifacts
 
-We expect we may export some secrets to environment variables.
+いくつかの機密情報を環境変数へエクスポートすることが予想される。
 
 
 ### Related principles
 
+二度計測して、一度構築する。
 Measure twice, build once. We are prioritizing some safety over some speed.
 
 Runtime is more valuable than compile time. We are prioritizing customer usage over developer usage.

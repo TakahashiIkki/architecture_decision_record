@@ -45,15 +45,15 @@ Contents:
 
 ADRを使い始めるために、このセクションについてチームメイトと話合いましょう。
 
-Decision identification:
+決めなきゃいけないものの判別:
 
   * そのADはどれくらい緊急で、どのくらい重要でしょうか?
 
   * それは今決めなきゃいけないでのしょうか? それとも、もっと分かるまで待てるでしょうか?
 
-  * Both personal and collective experience, as well as recognized design methods and practices, can assist with decision identification.
+  * 認知されている設計手法やプラクティスと同様、個人的な体験も集団での体験も、意思決定すべきものを識別するのに役立つ。
 
-  * Ideally maintain a decision todo list that complements the product todo list.
+  * プロダクトのToDoリストを補完する、意思決定のToDoリストもちゃんとメンテナンスしよう。
 
 意思決定:
 
@@ -88,14 +88,14 @@ Decision identification:
 
 決定のガイド:
 
-  * The steps above are adopted from the Wikipedia entry on [Architectural Decision](https://en.wikipedia.org/wiki/Architectural_decision)
+  * [Architectural Decision](https://en.wikipedia.org/wiki/Architectural_decision)のWikipediaのエントリから上記手順は採用している。
 
-  * A number of decision making techniques exists, both general ones and software and software architecture specific ones, for instance, dialogue mapping.
+  * 一般的なものもソフトウェアやソフトウェアアーキテクチャに関連したものも、多くの意思決定技法がある。例えばダイアログマッピングのように
 
 
-## How to start using ADRs with tools
+## ADRをツールを使ってどう始めるか
 
-You can start using ADRs with tools any way you want.
+必要ならばツールをツールを使ってADRを始められる:
 
 例えば:
 
